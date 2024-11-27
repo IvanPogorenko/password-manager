@@ -1,0 +1,6 @@
+@use '../colors/colors';
+
+.manager-page{
+  background-color: colors.$background;
+  max-width: 100%;
+}

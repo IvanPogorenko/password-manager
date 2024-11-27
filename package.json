@@ -2,10 +2,12 @@
   "scripts": {
     "sass-dev": "sass --watch src/styles/main.scss dist/main.css",
     "sass-build": "sass src/styles/main.scss dist/main.css",
-    "dev": "lite-server -c server-cfg/json-server.json"
+    "dev": "lite-server -c lite-server-cfg/lite-server.json"
   },
   "dependencies": {
-    "lite-server": "^2.6.1",
-    "scss": "^0.2.4"
+    "lite-server": "^2.6.1"
+  },
+  "devDependencies": {
+    "sass": "^1.81.0"
   }
 }

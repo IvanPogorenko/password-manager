@@ -2,9 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Password-manager</title>
+    <link rel="stylesheet" href="dist/main.css">
 </head>
-<body>
+<body class="manager-page">
+
+<div class="container">
+    <section class="passwords-list">
+        <h1 class="passwords-list__head">Список ваших паролей</h1>
+        <div class="passwords-list__password-elems">
+
+        </div>
+        <div class="passwords-list__action">
+            <button class="btn" id="new-line">Добавить пароль</button>
+        </div>
+    </section>
+</div>
+
+<section class="overlay">
+    <form class="form">
+        <div class="form__headline">
+            <h2 class="form__title">Добавьте ваш пароль</h2>
+            <svg class="form__close" width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12Z" stroke="#ffffff" stroke-width="1.5"/>
+                <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <div class="form__field">
+            <input type="text" name="ссылка" value="" class="input-field form__input-field" placeholder="ссылка">
+        </div>
+        <div class="form__field">
+            <input type="text" name="логин" value="" class="input-field form__input-field" placeholder="логин">
+        </div>
+        <div class="form__field">
+            <input type="text" name="пароль" value="" class="input-field form__input-field" placeholder="пароль">
+        </div>
+        <div class="form__action">
+            <button class="btn" id="save">Сохранить</button>
+        </div>
+    </form>
+</section>
+
+<script src="src/index.js"></script>
 
 </body>
 </html>
