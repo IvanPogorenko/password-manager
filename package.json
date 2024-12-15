@@ -2,7 +2,7 @@
   "scripts": {
     "sass-dev": "sass --watch src/styles/main.scss dist/main.css",
     "sass-build": "sass src/styles/main.scss dist/main.css",
-    "js-build": "terser src/index.js --output dist/index.js",
+    "js-build": "terser src/index.js --output dist/index.js && terser service-worker.js --output dist/service-worker.js",
     "dev": "lite-server -c lite-server-cfg/lite-server.json",
     "build": "npm run sass-build && npm run js-build"
   },
