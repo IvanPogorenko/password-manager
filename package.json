@@ -4,7 +4,7 @@
     "sass-build": "sass src/styles/main.scss dist/main.css",
     "js-build": "terser src/index.js --output dist/index.js",
     "dev": "lite-server -c lite-server-cfg/lite-server.json",
-    "build": "npm run build:css && npm run build:js"
+    "build": "npm run sass-build && npm run js-build"
   },
   "dependencies": {
     "lite-server": "^2.6.1"
