@@ -23,7 +23,7 @@ generatePasswordBtn.addEventListener('click', (event) => {
 window.addEventListener('DOMContentLoaded', () => {
     init()
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('dist/service-worker.js')
+        navigator.serviceWorker.register('/service-worker.js')
             .then((registration) => {
                 console.log('Сервис-воркер успешно зарегистрирован:', registration);
             })

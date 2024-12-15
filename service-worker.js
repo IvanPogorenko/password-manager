@@ -4,7 +4,7 @@ const urlsToCache = [
     '/index.html',
     '/src/assets/password-manager.ico',
     '/dist/main.css',
-    '/dist/index.js'
+    '/src/index.js'
 ];
 
 self.addEventListener('install', (event) => {
