@@ -1,0 +1,13 @@
+@use '../colors/colors';
+
+.title-text{
+  color: colors.$text-color;
+  font-size: 40px;
+  align-self: flex-start;
+  text-align: center;
+}
+
+.text{
+  color: colors.$text-color;
+  font-size: 18px;
+}

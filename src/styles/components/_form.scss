@@ -26,4 +26,19 @@
   &__action{
     margin-top: 25px;
   }
+
+  &__generate-password{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__generate-text{
+    margin-bottom: 10px;
+  }
+
+  &__generate-difficult{
+    margin-bottom: 10px;
+  }
 }

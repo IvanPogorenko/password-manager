@@ -1,0 +1,21 @@
+{
+  "name": "Cool PM",
+  "short_name": "Cool PM",
+  "description": "PWA lab-1",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "src/assets/password-manager.ico",
+      "sizes": "192x192",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "src/assets/password-manager.ico",
+      "sizes": "512x512",
+      "type": "image/x-icon"
+    }
+  ]
+}

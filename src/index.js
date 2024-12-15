@@ -5,6 +5,7 @@ const fieldsContainer = document.querySelector('.passwords-list__password-elems'
 const closeOverlay = document.querySelector('.form__close')
 const addBtn = document.getElementById('new-line')
 const saveFormBtn = document.getElementById('save')
+const generatePasswordBtn = document.querySelector('.form__generate-btn')
 
 //password for localStorage
 let userPasswords = []
@@ -13,8 +14,24 @@ let userPasswords = []
 addBtn.addEventListener('click', ()=>{showOverlay(true)})
 closeOverlay.addEventListener('click', ()=>{showOverlay(false)})
 saveFormBtn.addEventListener('click', () => {addNewPassword()})
+generatePasswordBtn.addEventListener('click', (event) => {
+    event.preventDefault()
+    const passwordDifficulty = document.getElementById('difficult').value
+    generatePasswordByDifficulty(passwordDifficulty)
+})
 
-window.addEventListener('DOMContentLoaded', () => {init()});
+window.addEventListener('DOMContentLoaded', () => {
+    init()
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then((registration) => {
+                console.log('Сервис-воркер успешно зарегистрирован:', registration);
+            })
+            .catch((error) => {
+                console.log('Ошибка при регистрации сервис-воркера:', error);
+            });
+    }
+});
 
 function init(){
     if (localStorage.getItem('passwords')){
@@ -43,7 +60,7 @@ function createFieldsContainer(){
 function createField(content, key){
     const input = document.createElement('input')
     input.setAttribute('type', 'text')
-    input.setAttribute('disabled', 'true')
+    input.setAttribute('readonly', 'true')
     input.setAttribute('name', `${key}`)
     input.setAttribute('value', `${content}`)
     input.classList.add('input-field')
@@ -88,4 +105,56 @@ function fieldsCheck(fields){
         }
     }
     return true
+}
+
+function generatePasswordByDifficulty(difficulty) {
+    const lowerCaseChars = 'abcdefghijklmnopqrstuvwxyz';
+    const upperCaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const numbers = '0123456789';
+    const specialChars = '!@#$%^&*()_-+=<>?';
+
+    let charPool = {};
+
+    const passwordLength = 12;
+    let password = '';
+
+    const passwordField = document.getElementById('password')
+
+    switch (difficulty) {
+        case 'easy':
+            charPool['lowerCase'] = lowerCaseChars;
+            charPool['upperCase'] = upperCaseChars;
+            break;
+        case 'medium':
+            charPool['lowerCase'] = lowerCaseChars;
+            charPool['upperCase'] = upperCaseChars;
+            charPool['numbers'] = numbers;
+            break;
+        case 'hard':
+            charPool['lowerCase'] = lowerCaseChars;
+            charPool['upperCase'] = upperCaseChars;
+            charPool['numbers'] = numbers;
+            charPool['symbols'] = specialChars;
+            break;
+        default:
+            throw new Error('Значения сложности могут быть только: easy, medium, hard');
+    }
+
+    for(let key in charPool){
+        for(let i = 0; i < passwordLength/Object.keys(charPool).length; i++){
+            const randomIndex = Math.floor(Math.random() * charPool[key].length);
+            password += charPool[key][randomIndex]
+        }
+    }
+
+    let arr = password.split('');
+
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+
+    password = arr.join('');
+
+    passwordField.value = password
 }
